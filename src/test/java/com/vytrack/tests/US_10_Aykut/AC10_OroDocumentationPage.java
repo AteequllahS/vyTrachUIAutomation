@@ -4,7 +4,9 @@ import com.vytrack.pages.VLoginPage;
 import com.vytrack.pages.VerifyDocumentationPage_Aykut;
 import com.vytrack.utilities.BrowserUtil;
 import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.TestBase;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class AC10_OroDocumentationPage extends TestBase {
@@ -18,5 +20,7 @@ public class AC10_OroDocumentationPage extends TestBase {
 
         VerifyDocumentationPage_Aykut verify=new VerifyDocumentationPage_Aykut();
         verify.getHelp.click();
+        String expectedTitle="Dashboard";
+        Assertions.assertEquals(expectedTitle, Driver.getDriver().getTitle());
     }
 }
