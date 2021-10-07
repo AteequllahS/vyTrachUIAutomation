@@ -22,5 +22,8 @@ public class AC10_OroDocumentationPage extends TestBase {
         verify.getHelp.click();
         String expectedTitle="Dashboard";
         Assertions.assertEquals(expectedTitle, Driver.getDriver().getTitle());
+        BrowserUtil.waitFor(2);
+        vyTrack.logOut();
+        BrowserUtil.waitFor(2);
     }
 }
