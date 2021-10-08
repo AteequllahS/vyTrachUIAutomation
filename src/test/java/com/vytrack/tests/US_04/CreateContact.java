@@ -51,6 +51,26 @@ public class CreateContact extends TestBase {
        Select gender = new Select(Driver.getDriver().findElement(By.name("oro_contact_form[gender]")));
        gender.selectByIndex(1);
        createContact.primary.click();
+       createContact.label.click();
+       createContact.label.sendKeys(faker.letterify("### #### #######"));
+       createContact.firstName2.click();
+       createContact.firstName2.sendKeys(faker.name().firstName());
+       createContact.lastName2.click();
+       createContact.lastName2.sendKeys(faker.name().lastName());
+       createContact.organization.click();
+       createContact.organization.sendKeys("VyTrack");
+       createContact.country.click();
+       createContact.country.sendKeys("United States");
+       createContact.street.click();
+       createContact.street.sendKeys(faker.address().streetAddress());
+       createContact.city.click();
+       createContact.city.sendKeys(faker.address().city());
+       createContact.state.click();
+       createContact.state.sendKeys(faker.address().state());
+       createContact.zipCode.click();
+       createContact.zipCode.sendKeys(faker.address().zipCode());
+       createContact.billing.click();
+       createContact.submit.click();
 
 
 

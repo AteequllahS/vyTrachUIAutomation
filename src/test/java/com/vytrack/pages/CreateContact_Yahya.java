@@ -67,6 +67,29 @@ public class CreateContact_Yahya {
     @FindBy(name = "oro_contact_form[addresses][0][primary]")
     public WebElement primary;
 
+    // Address info
+    @FindBy(name = "oro_contact_form[addresses][0][label]")
+    public WebElement label;
+    @FindBy(name = "oro_contact_form[addresses][0][firstName]")
+    public WebElement firstName2;
+    @FindBy(name = "oro_contact_form[addresses][0][lastName]")
+    public WebElement lastName2;
+    @FindBy(name = "oro_contact_form[addresses][0][organization]")
+    public WebElement organization;
+    @FindBy(id = "s2id_oro_contact_form_addresses_0_country-uid-615fcf57a292c")
+    public WebElement country;
+    @FindBy(name = "oro_contact_form[addresses][0][street]")
+    public WebElement street;
+    @FindBy(name = "oro_contact_form[addresses][0][city]")
+    public WebElement city;
+    @FindBy(name = "oro_contact_form[addresses][0][region_text]")
+    public WebElement state;
+    @FindBy(name = "oro_contact_form[addresses][0][postalCode]")
+    public WebElement zipCode;
+    @FindBy(name = "oro_contact_form[addresses][0][types][]")
+    public WebElement billing;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement submit;
 
     public CreateContact_Yahya(){
         PageFactory.initElements(Driver.getDriver(),this);
