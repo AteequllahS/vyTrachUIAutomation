@@ -1,5 +1,6 @@
 package com.vytrack.tests.US_04;
 
+import com.github.javafaker.Faker;
 import com.vytrack.pages.CreateContact_Yahya;
 import com.vytrack.pages.VLoginPage;
 import com.vytrack.utilities.BrowserUtil;
@@ -21,8 +22,19 @@ public class CreateContact extends TestBase {
 
        // go to contacts tab
        CreateContact_Yahya createContact = new CreateContact_Yahya();
-       createContact.createContact();
+       createContact.createContacts();
        BrowserUtil.waitFor(3);
+
+       Faker faker = new Faker();
+       createContact.firstName.click();
+       createContact.firstName.sendKeys(faker.name().firstName());
+       BrowserUtil.waitFor(2);
+       createContact.lastName.click();
+       createContact.lastName.sendKeys(faker.name().lastName());
+       createContact.emailBox.click();
+       createContact.emailBox.sendKeys("John@email.com");
+       createContact.phoneNumber.click();
+       createContact.phoneNumber.sendKeys(faker.numerify("### ### ####"));
 
 
 

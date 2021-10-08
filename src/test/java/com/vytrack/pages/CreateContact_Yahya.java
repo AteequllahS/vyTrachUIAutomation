@@ -39,11 +39,23 @@ public class CreateContact_Yahya {
     @FindBy(xpath = "(//a[normalize-space(.)='Create Contact'])")
     public WebElement createContactBtn;
 
+
+    // elements for form
+    @FindBy(name = "oro_contact_form[firstName]")
+    public WebElement firstName;
+    @FindBy(name = "oro_contact_form[lastName]")
+    public WebElement lastName;
+    @FindBy(name = "oro_contact_form[emails][0][email]")
+    public WebElement emailBox;
+    @FindBy(name = "oro_contact_form[phones][0][phone]")
+    public WebElement phoneNumber;
+
+
     public CreateContact_Yahya(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    public void createContact(){
+    public void createContacts(){
 
         customersBtn.click();
         BrowserUtil.waitFor(2);

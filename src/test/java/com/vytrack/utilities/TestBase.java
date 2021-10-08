@@ -19,8 +19,8 @@ public abstract class TestBase {
     @AfterEach
     public void closeBrowser(){
 
-//     BrowserUtil.waitFor(2);
-//     Driver.closeBrowser();
+     BrowserUtil.waitFor(2);
+     Driver.closeBrowser();
 
     }
 }
