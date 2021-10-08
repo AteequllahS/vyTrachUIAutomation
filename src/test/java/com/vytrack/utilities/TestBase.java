@@ -13,6 +13,8 @@ public abstract class TestBase {
     public void setupWebDriver(){
 
         driver = Driver.getDriver();
+        driver.get(ConfigurationReader.read("url"));
+
         Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
