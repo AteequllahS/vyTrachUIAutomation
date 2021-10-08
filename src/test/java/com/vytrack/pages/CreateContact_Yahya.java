@@ -49,6 +49,23 @@ public class CreateContact_Yahya {
     public WebElement emailBox;
     @FindBy(name = "oro_contact_form[phones][0][phone]")
     public WebElement phoneNumber;
+    @FindBy(name = "oro_contact_form[fax]")
+    public WebElement faxNumber;
+    @FindBy(name = "oro_contact_form[skype]")
+    public WebElement skype;
+    @FindBy(name = "oro_contact_form[twitter]")
+    public WebElement twitter;
+    @FindBy(name = "oro_contact_form[facebook]")
+    public WebElement facebook;
+    @FindBy(name = "oro_contact_form[jobTitle]")
+    public WebElement jobTitle;
+    // 2021 Oct 7
+//    @FindBy(name = "date_selector_oro_contact_form_birthday-uid-615fcf57a04a2")
+//    public WebElement birthDay;
+    @FindBy(name = "oro_contact_form[gender]")
+    public WebElement gender;
+    @FindBy(name = "oro_contact_form[addresses][0][primary]")
+    public WebElement primary;
 
 
     public CreateContact_Yahya(){

@@ -5,8 +5,11 @@ import com.vytrack.pages.CreateContact_Yahya;
 import com.vytrack.pages.VLoginPage;
 import com.vytrack.utilities.BrowserUtil;
 import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.TestBase;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 
 public class CreateContact extends TestBase {
 
@@ -16,8 +19,7 @@ public class CreateContact extends TestBase {
        // login in as user
        VLoginPage loginPage=new VLoginPage();
        loginPage.goTo();
-       loginPage.login(ConfigurationReader.read("truckDriver1"),
-                        ConfigurationReader.read("password"));
+       loginPage.login(ConfigurationReader.read("truckDriver1"), ConfigurationReader.read("password"));
        BrowserUtil.waitFor(2);
 
        // go to contacts tab
@@ -35,7 +37,20 @@ public class CreateContact extends TestBase {
        createContact.emailBox.sendKeys("John@email.com");
        createContact.phoneNumber.click();
        createContact.phoneNumber.sendKeys(faker.numerify("### ### ####"));
-
+       createContact.faxNumber.click();
+       createContact.faxNumber.sendKeys(faker.numerify("### ### ####"));
+       createContact.skype.click();
+       createContact.skype.sendKeys("@user4");
+       createContact.twitter.click();
+       createContact.facebook.sendKeys("user4user4");
+       createContact.jobTitle.click();
+       createContact.jobTitle.sendKeys("SDET");
+//       createContact.birthDay.click();
+//       createContact.birthDay.sendKeys("2021 Oct 7");
+       createContact.gender.click();
+       Select gender = new Select(Driver.getDriver().findElement(By.name("oro_contact_form[gender]")));
+       gender.selectByIndex(1);
+       createContact.primary.click();
 
 
 
