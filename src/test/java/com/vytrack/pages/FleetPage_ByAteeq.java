@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class FleetPage {
+public class FleetPage_ByAteeq {
 
     @FindBy(xpath = "(//span[normalize-space(.)='Fleet'])[1]")
     public WebElement fleet;
@@ -19,7 +19,7 @@ public class FleetPage {
     @FindBy(xpath = "(//td/input)")// add index[] at the end to have access one by one.
     public WebElement singleCheck;
 
-    public FleetPage(){
+    public FleetPage_ByAteeq(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 }
