@@ -14,9 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class VehicleContractPage_Guistan {
+public class VehicleContractPage_Gulistan {
 
-    public VehicleContractPage_Guistan(){
+    public VehicleContractPage_Gulistan(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -128,7 +128,7 @@ public class VehicleContractPage_Guistan {
     public WebElement dropdownElement;
 
     public void paymentType(){
-        BrowserUtil.waitFor(2);
+        BrowserUtil.waitForClickablility(By.xpath("(//span[@class='select2-arrow'])[1]"),8);
         TypeArrow.click();
         BrowserUtil.waitFor(2);
         Select paymentDropDown = new Select(dropdownElement);

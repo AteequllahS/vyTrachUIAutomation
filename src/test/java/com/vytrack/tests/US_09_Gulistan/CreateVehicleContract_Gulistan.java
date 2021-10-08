@@ -1,63 +1,74 @@
 package com.vytrack.tests.US_09_Gulistan;
 
-import com.vytrack.pages.CommonPage_Gulistan;
-import com.vytrack.pages.VLoginPage;
-import com.vytrack.pages.AllVehicleContractPage_Gulistan;
-import com.vytrack.pages.VehicleContractPage_Guistan;
+import com.vytrack.pages.*;
 import com.vytrack.utilities.BrowserUtil;
 import com.vytrack.utilities.ConfigurationReader;
-import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.TestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.TimeUnit;
 
 public class CreateVehicleContract_Gulistan extends TestBase {
 
     @Test
     public void managerCreateContract() {
 
-        VLoginPage vLoginPage = new VLoginPage();
-        String username = ConfigurationReader.read("storeManager1");
-        String password = ConfigurationReader.read("password");
-        vLoginPage.login(username, password);
+        CreateVehiclePage_byNazli createVehiclePage = new CreateVehiclePage_byNazli();
 
-        CommonPage_Gulistan commonPage = new CommonPage_Gulistan();
-        commonPage.navigateToModule("Fleet", "Vehicle Contracts");
+        for (String manager : createVehiclePage.managersCredentials()) {
+
+            VLoginPage vLoginPage = new VLoginPage();
+            String username = manager;
+            String password = ConfigurationReader.read("password");
+            vLoginPage.login(username, password);
+
+            CommonPage_Gulistan commonPage = new CommonPage_Gulistan();
+            commonPage.navigateToModule("Fleet", "Vehicle Contracts");
 
 
-        AllVehicleContractPage_Gulistan allVehicleContractPage = new AllVehicleContractPage_Gulistan();
-        BrowserUtil.waitFor(5);
-        allVehicleContractPage.contractBtn.click();
+            AllVehicleContractPage_Gulistan allVehicleContractPage = new AllVehicleContractPage_Gulistan();
+            BrowserUtil.waitFor(5);
+            allVehicleContractPage.contractBtn.click();
 
 
-        VehicleContractPage_Guistan vehicleContractPage = new VehicleContractPage_Guistan();
-        //vehicleContractPage.chooseCalenderDate();
-        vehicleContractPage.fillForm();
-        vehicleContractPage.SaveAndCloseBtn.click();
+            VehicleContractPage_Gulistan vehicleContractPage = new VehicleContractPage_Gulistan();
+            //vehicleContractPage.chooseCalenderDate();
+            vehicleContractPage.fillForm();
+            vehicleContractPage.SaveAndCloseBtn.click();
 
-        //Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        String actualMassage = vehicleContractPage.flashMassage.getText();
-        Assertions.assertEquals("Entity saved",vehicleContractPage.flashMassage.getText());
+            //Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            String actualMassage = vehicleContractPage.flashMassage.getText();
+            Assertions.assertEquals("Entity saved",vehicleContractPage.flashMassage.getText());
+
+            createVehiclePage.logOut();
+        }
     }
+
+
+
 
 
 
     @Test
     public void driverNotCreateContract(){
 
-        VLoginPage vLoginPage = new VLoginPage();
-        String username = ConfigurationReader.read("truckDriver1");
-        String password = ConfigurationReader.read("password");
-        vLoginPage.login(username, password);
+        CreateVehiclePage_byNazli createVehiclePage = new CreateVehiclePage_byNazli();
 
-        CommonPage_Gulistan commonPage = new CommonPage_Gulistan();
-        commonPage.navigateToModule("Fleet", "Vehicle Contracts");
+        for (String driver : createVehiclePage.driversCredentials()) {
 
-        //Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            VLoginPage vLoginPage = new VLoginPage();
+            String username = ConfigurationReader.read("truckDriver1");
+            String password = ConfigurationReader.read("password");
+            vLoginPage.login(username, password);
 
-        Assertions.assertEquals("You do not have permission to perform this action.", commonPage.alertMassage.getText());
+            CommonPage_Gulistan commonPage = new CommonPage_Gulistan();
+            commonPage.navigateToModule("Fleet", "Vehicle Contracts");
+
+            //Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+            Assertions.assertEquals("You do not have permission to perform this action.", commonPage.alertMassage.getText());
+            createVehiclePage.logOut();
+        }
+
 
 
 
