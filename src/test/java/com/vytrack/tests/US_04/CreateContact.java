@@ -66,7 +66,8 @@ public class CreateContact extends TestBase {
        createContact.street.sendKeys(faker.address().streetAddress());
        createContact.city.click();
        createContact.city.sendKeys(faker.address().city());
-
+       WebElement state1 = new Driver().getDriver().findElement(By.xpath("//li/div[text()='Washington']"));
+       state1.click();
        createContact.zipCode.click();
        createContact.zipCode.sendKeys(faker.address().zipCode());
        createContact.billing.click();
