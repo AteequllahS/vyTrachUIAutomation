@@ -82,7 +82,7 @@ public class CreateContact_Yahya {
     public WebElement street;
     @FindBy(name = "oro_contact_form[addresses][0][city]")
     public WebElement city;
-    @FindBy(name = "oro_contact_form[addresses][0][region_text]")
+    @FindBy(xpath = "//span[text()='Choose a state...']")
     public WebElement state;
     @FindBy(name = "oro_contact_form[addresses][0][postalCode]")
     public WebElement zipCode;
