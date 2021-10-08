@@ -4,10 +4,12 @@ import com.github.javafaker.Faker;
 import com.vytrack.utilities.BrowserUtil;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class CreateContact_Yahya {
     /**
@@ -19,15 +21,6 @@ public class CreateContact_Yahya {
      * And click “Save and Close” button
      * Then verify “contact saved” confirm message
      * */
-
-    @FindBy(id = "prependedInput")
-    public WebElement userNameField;
-
-    @FindBy(id = "prependedInput2")
-    public WebElement passwordField;
-
-    @FindBy(id = "submit")
-    public WebElement loginButton;
 
 
     @FindBy(xpath = "(//span[normalize-space(.)='Customers'])")
@@ -103,6 +96,52 @@ public class CreateContact_Yahya {
         BrowserUtil.waitFor(2);
         createContactBtn.click();
         BrowserUtil.waitFor(2);
+
+        Faker faker = new Faker();
+        firstName.click();
+        firstName.sendKeys(faker.name().firstName());
+        BrowserUtil.waitFor(2);
+        lastName.click();
+        lastName.sendKeys(faker.name().lastName());
+        emailBox.click();
+        emailBox.sendKeys("John@email.com");
+        phoneNumber.click();
+        phoneNumber.sendKeys(faker.numerify("### ### ####"));
+        faxNumber.click();
+        faxNumber.sendKeys(faker.numerify("### ### ####"));
+        skype.click();
+        skype.sendKeys("@user4");
+        twitter.click();
+        facebook.sendKeys("user4user4");
+        jobTitle.click();
+        jobTitle.sendKeys("SDET");
+        gender.click();
+        Select gender = new Select(Driver.getDriver().findElement(By.name("oro_contact_form[gender]")));
+        gender.selectByIndex(1);
+        primary.click();
+        label.click();
+        label.sendKeys(faker.letterify("LABEL1234"));
+        firstName2.click();
+        firstName2.sendKeys(faker.name().firstName());
+        lastName2.click();
+        lastName2.sendKeys(faker.name().lastName());
+        organization.click();
+        organization.sendKeys("VyTrack");
+        country.click();
+        //Select country = new Select(Driver.getDriver().findElement(By.xpath("//span[text()='Choose a country...']")));
+        WebElement country1 = new Driver().getDriver().findElement(By.xpath("//div[text()='United States']"));
+        country1.click();
+        street.click();
+        street.sendKeys(faker.address().streetAddress());
+        city.click();
+        city.sendKeys(faker.address().city());
+        state.click();
+        WebElement state1 = new Driver().getDriver().findElement(By.xpath("//li/div[text()='Washington']"));
+        state1.click();
+        zipCode.click();
+        zipCode.sendKeys(faker.address().zipCode());
+        billing.click();
+        submit.click();
 
     }
 }
