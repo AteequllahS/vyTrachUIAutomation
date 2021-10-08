@@ -13,17 +13,13 @@ public class AC10_OroDocumentationPage extends TestBase {
 
     @Test
     public void verifyPage() {
-        VLoginPage vyTrack = new VLoginPage();
-        vyTrack.goTo();
-        vyTrack.login(ConfigurationReader.read("truckDriver1"), ConfigurationReader.read("password"));
-        BrowserUtil.waitFor(3);
 
-        VerifyDocumentationPage_Aykut verify=new VerifyDocumentationPage_Aykut();
-        verify.getHelp.click();
-        String expectedTitle="Dashboard";
-        Assertions.assertEquals(expectedTitle, Driver.getDriver().getTitle());
-        BrowserUtil.waitFor(2);
-        vyTrack.logOut();
-        BrowserUtil.waitFor(2);
+
+        VerifyDocumentationPage_Aykut verifyDocumentationPage_aykut=new VerifyDocumentationPage_Aykut();
+        verifyDocumentationPage_aykut.verifyPage();
+
+
+
+
     }
 }
