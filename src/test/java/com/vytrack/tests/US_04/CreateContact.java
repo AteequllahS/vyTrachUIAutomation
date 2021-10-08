@@ -9,6 +9,7 @@ import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.TestBase;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class CreateContact extends TestBase {
@@ -45,14 +46,12 @@ public class CreateContact extends TestBase {
        createContact.facebook.sendKeys("user4user4");
        createContact.jobTitle.click();
        createContact.jobTitle.sendKeys("SDET");
-//       createContact.birthDay.click();
-//       createContact.birthDay.sendKeys("2021 Oct 7");
        createContact.gender.click();
        Select gender = new Select(Driver.getDriver().findElement(By.name("oro_contact_form[gender]")));
        gender.selectByIndex(1);
        createContact.primary.click();
        createContact.label.click();
-       createContact.label.sendKeys(faker.letterify("### #### #######"));
+       createContact.label.sendKeys(faker.letterify("LABEL1234"));
        createContact.firstName2.click();
        createContact.firstName2.sendKeys(faker.name().firstName());
        createContact.lastName2.click();
@@ -60,20 +59,18 @@ public class CreateContact extends TestBase {
        createContact.organization.click();
        createContact.organization.sendKeys("VyTrack");
        createContact.country.click();
-       createContact.country.sendKeys("United States");
+       //Select country = new Select(Driver.getDriver().findElement(By.xpath("//span[text()='Choose a country...']")));
+       WebElement country1 = new Driver().getDriver().findElement(By.xpath("//div[text()='United States']"));
+       country1.click();
        createContact.street.click();
        createContact.street.sendKeys(faker.address().streetAddress());
        createContact.city.click();
        createContact.city.sendKeys(faker.address().city());
-       createContact.state.click();
-       createContact.state.sendKeys(faker.address().state());
+
        createContact.zipCode.click();
        createContact.zipCode.sendKeys(faker.address().zipCode());
        createContact.billing.click();
        createContact.submit.click();
-
-
-
+       BrowserUtil.waitFor(3);
    }
-
 }

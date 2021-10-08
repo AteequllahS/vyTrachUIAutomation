@@ -76,7 +76,7 @@ public class CreateContact_Yahya {
     public WebElement lastName2;
     @FindBy(name = "oro_contact_form[addresses][0][organization]")
     public WebElement organization;
-    @FindBy(id = "s2id_oro_contact_form_addresses_0_country-uid-615fcf57a292c")
+    @FindBy(xpath = "//span[text()='Choose a country...']")
     public WebElement country;
     @FindBy(name = "oro_contact_form[addresses][0][street]")
     public WebElement street;
