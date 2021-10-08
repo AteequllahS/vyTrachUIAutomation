@@ -1,6 +1,6 @@
 package com.vytrack.tests.US_03;
 
-import com.vytrack.pages.FleetPage;
+import com.vytrack.pages.FleetPage_ByAteeq;
 import com.vytrack.pages.VLoginPage;
 import com.vytrack.utilities.BrowserUtil;
 import com.vytrack.utilities.ConfigurationReader;
@@ -30,7 +30,7 @@ public class AC02_Fleet_VehiclesTest extends TestBase {
         vyTrack.login(ConfigurationReader.read("storeManager1"), ConfigurationReader.read("password"));
         BrowserUtil.waitFor(3);
 
-        FleetPage fleetButton = new FleetPage();
+        FleetPage_ByAteeq fleetButton = new FleetPage_ByAteeq();
         fleetButton.fleet.click();
         BrowserUtil.waitFor(2);
         fleetButton.vehicles.click();
