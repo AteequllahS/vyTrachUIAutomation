@@ -128,7 +128,7 @@ public class VehicleContractPage_Gulistan {
     public WebElement dropdownElement;
 
     public void paymentType(){
-        BrowserUtil.waitForClickablility(By.xpath("(//span[@class='select2-arrow'])[1]"),8);
+        BrowserUtil.waitForClickablility(By.xpath("(//span[@class='select2-arrow'])[1]"),9);
         TypeArrow.click();
         BrowserUtil.waitFor(2);
         Select paymentDropDown = new Select(dropdownElement);

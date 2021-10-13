@@ -56,7 +56,7 @@ public class CreateVehicleContract_Gulistan extends TestBase {
         for (String driver : createVehiclePage.driversCredentials()) {
 
             VLoginPage vLoginPage = new VLoginPage();
-            String username = ConfigurationReader.read("truckDriver1");
+            String username = driver;
             String password = ConfigurationReader.read("password");
             vLoginPage.login(username, password);
 
