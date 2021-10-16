@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VLoginPage {
 
     @FindBy(id = "prependedInput")
@@ -18,8 +21,12 @@ public class VLoginPage {
     @FindBy(id = "_submit")
     public WebElement loginButton;
 
-    @FindBy(xpath = "//div[.='Invalid user name or password.']")
-    public WebElement errorMessage;
+
+    @FindBy(xpath = "//li/a[@class='dropdown-toggle']")
+    public WebElement  logoutDropdown;
+
+    @FindBy(xpath = "(//li[@class='last'])[3]") //li/a[.='Logout']
+    public WebElement logoutBtn;
 
     public VLoginPage(){
 
@@ -39,6 +46,16 @@ public class VLoginPage {
         Driver.getDriver().get(ConfigurationReader.read("url"));
 
     }
+
+    public void logOut() {
+        logoutDropdown.click();
+        BrowserUtil.waitFor(2);
+        logoutBtn.click();
+
+    }
+
+
+
 
 
 
