@@ -22,7 +22,7 @@ public abstract class TestBase {
     public void closeBrowser(){
 
      BrowserUtil.waitFor(2);
-     Driver.closeBrowser();
+    // Driver.closeBrowser();
 
     }
 }

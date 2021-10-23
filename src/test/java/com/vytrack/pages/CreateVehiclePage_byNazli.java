@@ -30,7 +30,7 @@ public CreateVehiclePage_byNazli(){
     @FindBy(css = "input#prependedInput2")
     public WebElement passwordField;
 
-    @FindBy(css = "button#_submit")
+    @FindBy(id = "_submit")
     public WebElement loginButton;
 
     @FindBy(xpath = "//li/a[@class='dropdown-toggle']")

@@ -8,6 +8,7 @@ import com.vytrack.utilities.Driver;
 import com.vytrack.utilities.TestBase;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -20,19 +21,19 @@ public class AC01_CustomerAccount extends TestBase {
 
         VLoginPage loginPage = new VLoginPage();
         loginPage.goTo();
-        loginPage.login(ConfigurationReader.read("storeManager1"), ConfigurationReader.read("password"));
+        loginPage.login(ConfigurationReader.read("storeManager2"), ConfigurationReader.read("password"));
 
         loginPage.loginButton.click();
-        BrowserUtil.waitFor(4);
+        BrowserUtil.waitFor(7);
 
-        WebElement customerBtn = Driver.getDriver().findElement(By.xpath("(//li/a/span[@class='title title-level-1'])[3]"));
-        WebElement accountBtn = Driver.getDriver().findElement(By.xpath("//span[.='Accounts'][@class='title title-level-2']"));
 
-        Actions actions = new Actions(Driver.getDriver());
-        actions.moveToElement(customerBtn).pause(2000).perform();
-        BrowserUtil.waitFor(2);
-        actions.moveToElement(accountBtn).pause(2000).click().perform();
-        BrowserUtil.waitFor(2);
+            WebElement customerBtn = driver.findElement(By.xpath("(//span[contains(text(),'Customers')])[1]"));
+            WebElement accountBtn = driver.findElement(By.xpath("//span[.='Accounts'][@class='title title-level-2']"));
+
+            Actions actions = new Actions(Driver.getDriver());
+            actions.moveToElement(customerBtn).pause(2000).click().perform();
+            actions.moveToElement(accountBtn).pause(2000).click().perform();
+
 
         Customer_AccountPage_ByAteeq customerAcc = new Customer_AccountPage_ByAteeq();
 
@@ -52,7 +53,7 @@ public class AC01_CustomerAccount extends TestBase {
             BrowserUtil.waitFor(1);
         }
 
-        System.out.println("TEST FOR CUSTOMER ACCOUNT COMPLETED.");
+          System.out.println("TEST FOR CUSTOMER ACCOUNT COMPLETED.");
 
     }
 }
